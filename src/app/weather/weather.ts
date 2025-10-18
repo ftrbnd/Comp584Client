@@ -7,15 +7,15 @@ import { MatTableModule } from '@angular/material/table';
   selector: 'app-weather',
   imports: [MatTableModule],
   templateUrl: './weather.html',
-  styleUrl: './weather.scss'
+  styleUrl: './weather.scss',
 })
 export class Weather {
   forecasts: WeatherData[] = [];
 
   constructor(http: HttpClient) {
-    http.get<WeatherData[]>('http://localhost:5153/weatherforecast').subscribe(result => {
-      console.log(result)
+    http.get<WeatherData[]>('http://localhost:5153/weatherforecast').subscribe((result) => {
+      console.log(result);
       this.forecasts = result;
-    })
+    });
   }
 }

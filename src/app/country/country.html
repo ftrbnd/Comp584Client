@@ -1,1 +1,27 @@
-<p>country works!</p>
+@if (countries.length > 0) {
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>ISO2</th>
+      <th>ISO3</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (c of countries; track $index) {
+    <tr>
+      <td>
+        <a [routerLink]="['/country-population', c.id]">{{ c.id }}</a>
+      </td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.iso2 }}</td>
+      <td>{{ c.iso3 }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @else {
+<p>Loading...</p>
+}
