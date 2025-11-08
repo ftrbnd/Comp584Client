@@ -1,4 +1,3 @@
-@if (countries.length > 0) {
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,7 +9,7 @@
   </thead>
 
   <tbody>
-    @for (c of countries; track $index) {
+    @for (c of countries$ | async; track $index) {
     <tr>
       <td>
         <a [routerLink]="['/country-population', c.id]">{{ c.id }}</a>
@@ -22,6 +21,3 @@
     }
   </tbody>
 </table>
-} @else {
-<p>Loading...</p>
-}
