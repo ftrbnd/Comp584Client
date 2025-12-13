@@ -1,1 +1,23 @@
-<p>city works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (c of cities$ | async; track $index) {
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.lat }}</td>
+      <td>{{ c.lng }}</td>
+      <td>{{ c.population }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
