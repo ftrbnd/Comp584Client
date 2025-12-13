@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth-service';
 import { LoginRequest } from './login-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { LoginRequest } from './login-request';
 })
 export class Login implements OnInit {
   form!: UntypedFormGroup;
+  router = inject(Router);
 
   constructor(private authService: AuthService) {}
 
@@ -30,6 +32,7 @@ export class Login implements OnInit {
     this.authService.login(loginRequest).subscribe({
       next: (response) => {
         console.log(response);
+        this.router.navigateByUrl('/');
       },
       error: (err) => {
         console.error('Login failed', err);
